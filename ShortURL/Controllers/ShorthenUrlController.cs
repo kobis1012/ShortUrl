@@ -6,11 +6,11 @@ namespace ShortURL.Controllers
 {
     [ApiController]
     [Route("/")]
-    public class ShorthenUrlController : ControllerBase
+    public class ShortenUrlController : ControllerBase
     {
         static int counter = 0;
         private readonly UrlsDbService _urlsService;
-        public ShorthenUrlController(UrlsDbService urlsService) => _urlsService = urlsService;
+        public ShortenUrlController(UrlsDbService urlsService) => _urlsService = urlsService;
 
 
         [HttpPut(Name = "PutShortUrl")]
@@ -19,7 +19,7 @@ namespace ShortURL.Controllers
             counter += 1;
             string shortUrl = Convert.ToBase64String(Encoding.UTF8.GetBytes(counter.ToString()));
             // store the short url in the DB
-            await _urlsService.CreateAsync(new Models.TinyUrlUser { longUrl = url, shortUrl = shortUrl}) ;
+            await _urlsService.CreateAsync(new Models.ShortUrlUser { longUrl = url, shortUrl = shortUrl}) ;
 
             return "https://localhost:7212?shortUrlDomain=" + shortUrl;
         }

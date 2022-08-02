@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ShortURL.Models
 {
-    public class TinyUrlUser
+    public class ShortUrlUser
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
